@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .one {
+            display: flex;
+            flex-wrap: wrap;
+            width: 474px;
+            margin: 0 auto;
+            border: 7px solid white;
+            border-radius: 3%;
+
+        }
+
+        .one1 {
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin-left: 19px;
+            margin-top: 19px;
+            margin-bottom: 19px;
+        }
+
+        .one1 :last-child {
+            margin-right: 19px;
+        }
+
+        .one2 {
+            list-style: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background: black;
+            margin: 5px;
+        }
+
+        .two1-1 {
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-3 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-4 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-5 {
+            display: flex;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-5 .item:nth-child(2) {
+            align-self: center;
+        }
+
+        .two1-6 {
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+
+        }
+
+        .two1-6 .item:nth-child(2) {
+            align-self: flex-end;
+        }
+
+        .one .item {
+            list-style: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background: black;
+            margin: 5px;
+        }
+
+        .tittle {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="tittle">一点</p>
+    <div class="one">
+        <div class="one1">
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <p class="tittle">二点</p>
+    <div class="one">
+        <div class="two1-1">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="two1-2">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="two1-3">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="two1-4">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="two1-5">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="two1-6">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <!-- 2 -->
+    <!-- 3 -->
+    <style>
+        .three1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+
+        .three1 .item:nth-child(2) {
+            align-self: center;
+        }
+
+        .three1 .item:nth-child(3) {
+            align-self: flex-end;
+        }
+    </style>
+    <!-- 3 -->
+    <p class="tittle">三点</p>
+    <div class="one">
+        <div class="three1">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <!-- 4 -->
+    <style>
+        .four1 {
+            display: flex;
+            align-content: space-between;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+
+        .four1 .item:nth-child(4) {
+            align-items: flex-end;
+
+        }
+
+        .four2 {
+            display: flex;
+            align-content: space-between;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+
+        .four2-1 {
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+    </style>
+    <!-- 4 -->
+    <p class="tittle">四点</p>
+    <div class="one">
+        <div class="four1">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="four2">
+            <div class="four2-1">
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+            <div class="four2-1">
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 4 -->
+    <style>
+        .five2 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+
+        .five2-1 {
+            flex-basis: 100%;
+            display: flex;
+        }
+
+        .five2-1:nth-child(1) {
+            justify-content: space-between;
+        }
+
+        .five2-1:nth-child(2) {
+            justify-content: center;
+        }
+
+        .five2-1:nth-child(3) {
+            justify-content: space-between;
+        }
+    </style>
+    <!-- 4 -->
+    <p class="tittle">五点</p>
+    <div class="one">
+        <div class="five2">
+            <div class="five2-1">
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+            <div class="five2-1">
+                <span class="item"></span>
+            </div>
+            <div class="five2-1">
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 6 -->
+    <style>
+        .six1 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+            align-content: space-between;
+        }
+
+        .six1-1 {
+            flex-basis: 100%;
+            display: flex;
+        }
+
+        .six2 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+            align-content: space-between;
+            flex-direction: column;
+        }
+
+        .six3 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+
+        .six3-1 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-basis: 100%;
+        }
+
+        .six3-1:nth-child(2) {
+            justify-content: center;
+        }
+
+        .six3-1:nth-child(3) {
+            justify-content: space-between;
+        }
+    </style>
+    <p class="tittle">六点</p>
+    <div class="one">
+
+        <div class="six1">
+            <div class="six1-1">
+                <span class="item"></span>
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+            <div class="six1-1">
+                <span class="item"></span>
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+        </div>
+        <div class="six2">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="six3">
+            <div class="six3-1">
+                <span class="item"></span>
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+            <div class="six3-1">
+                <span class="item"></span>
+            </div>
+            <div class="six3-1">
+                <span class="item"></span>
+                <span class="item"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <style>
+        .nine {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 3%;
+            margin: 19px;
+        }
+    </style>
+    <p class="tittle">九点</p>
+    <div class="one">
+        <div class="nine">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+</body>
+
+</html>

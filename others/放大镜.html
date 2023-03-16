@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        div {
+            display: block;
+        }
+
+        .all {
+            position: relative;
+            width: 452px;
+            float: left;
+            padding-bottom: 2px;
+            *position: relative;
+            *zoom: 1;
+            *z-index: 7;
+        }
+
+        .big {
+            width: 452px;
+        }
+
+        .big img {
+            width: 450px;
+            border: 0;
+            vertical-align: middle;
+        }
+
+        .small {
+            margin-bottom: 18px;
+            position: relative;
+            padding: 0;
+            margin: 0;
+        }
+
+        .small1 {
+            position: relative;
+            width: 380px;
+            height: 78px;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        .prev i {
+            width: 22px;
+            height: 32px;
+            background: url(./img/disabled-prev.png);
+            display: block;
+            font-style: normal;
+
+        }
+
+        .next i {
+            width: 22px;
+            height: 32px;
+            background: url(./img/__sprite.png);
+            display: block;
+            font-style: normal;
+            background-position: -78px 0;
+        }
+
+        .prev,
+        .next {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            width: 22px;
+            height: 32px;
+            float: left;
+
+            cursor: pointer;
+            top: 50%;
+            margin-top: -16px;
+        }
+
+        .prev {
+            left: 0;
+            position: relative;
+            bottom: -43px;
+        }
+
+        .next {
+            position: absolute;
+            right: 0;
+        }
+
+        ul {
+            transition: all 1s;
+            position: absolute;
+            width: 760px;
+            height: 88px;
+            top: -10px;
+            left: 0px;
+            list-style: none;
+            overflow: hidden;
+
+
+        }
+
+        li {
+            float: left;
+            margin: 0;
+            margin-left: 9px;
+            width: 60px;
+            height: 58px;
+            display: list-item;
+        }
+
+        img {
+            border: 0;
+            vertical-align: middle;
+        }
+
+        li img {
+            width: 54px;
+            height: 54px;
+        }
+
+        .focus {
+            border: 2px solid #e53e41;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        .cover {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 220px;
+            background-color: #ffeba2;
+            opacity: 0.5;
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+
+        .rightbox {
+            width: 420px;
+            height: 420px;
+            position: relative;
+            display: none;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            right: -10px;
+            top: 20px;
+        }
+
+        .rightbox img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
+    <div class="all">
+        <div class="big">
+            <img src="./img/big/01.jpg" />
+            <div class="cover"></div>
+        </div>
+        <div class="small">
+            <a class="prev" href="javascript:;"><i></i></a>
+            <a class="next" href="javascript:;"><i></i></a>
+            <div class="small1">
+                <ul>
+                    <li class="focus"><img src="./img/big/01.jpg"></li>
+                    <li><img src="./img/big/02.jpg"></li>
+                    <li><img src="./img/big/03.jpg"></li>
+                    <li><img src="./img/big/04.jpg"></li>
+                    <li><img src="./img/big/05.jpg"></li>
+                    <li><img src="./img/big/06.jpg"></li>
+                    <li><img src="./img/big/07.jpg"></li>
+                    <li><img src="./img/big/08.jpg"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rightbox">
+        <img src="./img/big/01.jpg" class="huge">
+    </div>
+    <script>
+        //绑定数据
+        var left = document.querySelector(".prev");
+        var right = document.querySelector(".next");
+        var smart = document.querySelectorAll("li");
+        var ulData = document.querySelector("ul");
+        var imgS = document.querySelector('.big img');
+        var focusing = document.querySelector(".focus");
+        //UL左右移动功能
+        ulData.style.left = "-40px";
+        console.log(ulData.style.left);
+        console.log(smart);
+        console.log(left); console.log(right);
+        left.onclick = function () {
+            let imgS = document.querySelector('.big img');
+            let focusing = document.querySelector(".focus");
+            var ulData = document.querySelector("ul");
+            if (focusing.previousElementSibling == null) {
+                return
+            } else {
+                let a = Number(parseInt(ulData.style.left));
+                var ulData = document.querySelector("ul");
+                ulData.style.left = (a + 30) + "px";
+                //三图和高亮
+                focusing.previousElementSibling.classList.add("focus");
+                focusing.classList.remove("focus");
+                focusing = document.querySelector(".focus");
+                let rightImg = document.querySelector(".rightbox img");
+                imgS.src = focusing.children[0].src;
+                rightImg.src = focusing.children[0].src;
+            }
+        }
+        right.onclick = function () {
+            let imgS = document.querySelector('.big img');
+            //UL左右移动功能
+            let focusing = document.querySelector(".focus");
+            if (focusing.nextElementSibling == null) {
+                return
+            } else {
+                var ulData = document.querySelector("ul");
+                /* console.log(ulData.style.left); */
+                let a = Number(parseInt(ulData.style.left));
+                /* console.log(a); */
+                var ulData = document.querySelector("ul");
+                ulData.style.left = (a - 30) + "px";
+                //三图和高亮
+                focusing.nextElementSibling.classList.add("focus");
+                focusing.classList.remove("focus");
+                focusing = document.querySelector(".focus");
+                let rightImg = document.querySelector(".rightbox img");
+                imgS.src = focusing.children[0].src;
+                rightImg.src = focusing.children[0].src;
+            }
+        }
+
+        //放大镜
+        window.addEventListener('load', function () {
+            // 获取元素
+            var cover = this.document.querySelector('.cover');
+            var big = this.document.querySelector('.big');
+            var rightbox = this.document.querySelector('.rightbox');
+            var huge = this.document.querySelector('.huge');
+            // 鼠标移动到左边的手机上的时候遮罩层和右边的手机显示出来
+            big.addEventListener('mouseover', function () {
+                cover.style.display = 'block'
+                rightbox.style.display = 'block'
+            })
+            // 鼠标移离开到左边的手机上的时候遮罩层和右边的手机隐藏 
+            big.addEventListener('mouseout', function () {
+                cover.style.display = 'none'
+                rightbox.style.display = 'none'
+            })
+            big.addEventListener('mousemove', function (e) {
+                var x = e.pageX - this.offsetLeft;
+                var y = e.pageY - this.offsetTop;
+                // x的移动距离
+                var totalx = x - cover.offsetWidth / 2;
+                var totaly = y - cover.offsetHeight / 2
+                if (totalx < 0) {
+                    totalx = 0;
+                } else if (totalx >= big.offsetWidth - cover.offsetWidth) {
+                    totalx = big.offsetWidth - cover.offsetWidth;
+                }
+                if (totaly < 0) {
+                    totaly = 0;
+                } else if (totaly >= big.offsetHeight - cover.offsetHeight) {
+                    totaly = big.offsetHeight - cover.offsetHeight;
+                }
+                cover.style.left = totalx + 'px';
+                cover.style.top = totaly + 'px';
+                // imgmaxx是图片最大x移动距离
+                var imgmaxx = rightbox.offsetWidth - huge.offsetWidth;
+                var imgmaxy = rightbox.offsetHeight - huge.offsetHeight;
+                var imgmovex = totalx * imgmaxx / (big.offsetWidth - cover.offsetWidth)
+                var imgmovey = totaly * imgmaxy / (big.offsetHeight - cover.offsetHeight)
+                huge.style.left = imgmovex + 'px';
+                huge.style.top = imgmovey + 'px';
+
+            })
+        })
+    </script>
+</body>
+
+</html>

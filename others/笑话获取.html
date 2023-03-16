@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取笑话</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        .top {
+            width: 676px;
+            height: 64px;
+            background-color: rgb(216, 211, 211);
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            margin-top: 50px;
+        }
+
+        .b {
+            background-color: white;
+            text-align: center;
+            width: 40px;
+            margin: 8px 5px;
+            padding: 3px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: 1140px;
+            margin-top: 50px;
+        }
+
+        th {
+            border: 1px solid rgb(198, 198, 198);
+            border-collapse: collapse;
+            text-align: center;
+            width: 93px;
+            height: 40px;
+            background-color: rgb(171, 171, 171);
+        }
+        td{
+            font-size: 19px;
+            line-height: 28px;
+            border: 1px solid rgb(198, 198, 198);
+            border-collapse: collapse;
+        }
+
+        .data {
+            border: 1px solid rgb(198, 198, 198);
+            border-collapse: collapse;
+            text-align: center;
+            width: 920px;
+            height: 40px;
+        }
+
+        td:nth-child(1){
+            text-align: center;
+            font-size: 19px;
+        }
+        td:nth-child(2){
+            padding: 5px;
+        }
+        td:nth-child(3){
+            padding: 5px;
+        }
+        .active{
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+                <div class="b"><<</div>
+                <div class="b active">1</div>
+                <div class="b">2</div>
+                <div class="b">3</div>
+                <div class="b">4</div>
+                <div class="b">5</div>
+                <div class="b">6</div>
+                <div class="b">7</div>
+                <div class="b">8</div>
+                <div class="b">9</div>
+                <div class="b">10</div>
+                <div class="b">>></div>
+        </div>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th class="data">内容</th>
+            </tr>
+        </table>
+        <script>
+            var index = 1;
+            var btn = document.querySelectorAll(".b");
+            var data = document.querySelector("table");
+            var active = document.querySelector(".active");
+            console.log(btn);
+            console.log(data);
+            var token = "VUfQal5rdb2VlsCq";
+            for(let i = 0 ; i<btn.length;i++){
+                console.log(Number(active.textContent));
+                btn[i].onclick = function(){//换页
+                    
+                    index = i;
+                    if(i==0){
+                        btn = document.querySelectorAll(".b");
+                        active = document.querySelector(".active");
+                        if(Number(active.textContent)>=2){
+                        index = Number(active.textContent)-1;
+                        
+                        for(let i = 0 ; i<btn.length;i++){
+                        btn[i].classList.remove("active"); 
+                    }
+                   btn[Number(active.textContent)-1].classList.add("active");
+                        }
+                    }
+                    if(i>0&&i<11){
+                        for(let i = 0 ; i<btn.length;i++){
+                        btn[i].classList.remove("active"); 
+                    }
+                   btn[i].classList.add("active");
+                    }
+                    if(i==11){
+                        btn = document.querySelectorAll(".b");
+                        active = document.querySelector(".active");
+                        if(Number(active.textContent)<=9){
+                        index = Number(active.textContent)+1;
+                       
+                        for(let i = 0 ; i<btn.length;i++){
+                        btn[i].classList.remove("active"); 
+                    }
+                   btn[Number(active.textContent)+1].classList.add("active");
+                        }
+                    }
+                    getData(index);
+                }
+            }
+
+var getData = function(index){
+    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "https://v2.alapi.cn/api/joke");
+                    var str = "token=VUfQal5rdb2VlsCq&page=" + index + "&num=10";
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send(str);
+                    //渲染
+                    xhr.onreadystatechange = function () {
+                        if (xhr.status === 200 && xhr.readyState === 4) {
+                            var res = JSON.parse(xhr.responseText);
+                            if (res.data !== null) {
+                                data.innerHTML = '<tr><th>序号</th><th>标题</th><th class="data">内容</th></tr>' + res.data.map(function (item, index) {
+                                    return '<tr><td>' + (Number(index) + 1) + '</td><td>' + item.title + "</td><td>" + item.content + "</td></tr>"
+                                }).join("");
+                            }
+                        }
+                    }
+}
+getData(1);
+        </script>
+</body>
+
+</html>
