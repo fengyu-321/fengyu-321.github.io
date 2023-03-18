@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 954px;
+            overflow: hidden;
+        }
+
+        .big {
+            overflow: hidden;
+            width: 1089px;
+            height: 429px;
+            position: relative;
+            top: -690px;
+            margin: 0 auto;
+        }
+
+        .small {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 1089px;
+            height: 429px;
+            position: absolute;
+
+        }
+
+        .bg {
+            position: relative;
+            width: 100%;
+        }
+
+        .c {
+            width: 789px;
+            height: 429px;
+            position: relative;
+        }
+
+        .data {
+            background-color: rgb(0, 0, 0, 0.6);
+            width: 100px;
+            height: 429px;
+            position: absolute;
+        }
+
+        p {
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 19px;
+            letter-spacing: 6px;
+            writing-mode: tb;
+            vertical-align: center;
+            position: absolute;
+            top: 40px;
+            left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../img/bg.jpg" class="bg">
+    <script src="../js/animate.js"></script>
+    <div class="big">
+        <div class="small">
+            <div class="c">
+                <div class="data">
+                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                </div>
+                <img src="../img/1.jpg" alt="" style="width: 789px; height: 429px;">
+            </div>
+            <div class="c" style="width: 100px;">
+                <div class="data">
+                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                </div>
+                <img src="../img/2.jpg" alt="" style="width: 789px; height: 429px;">
+            </div>
+            <div class="c" style="width: 100px;" >
+                <div class="data">
+                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                </div>
+                <img src="../img/3.jpg" alt="" style="width: 789px; height: 429px;">
+            </div>
+            <div class="c" style="width: 100px;">
+                <div class="data">
+                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                </div>
+                <img src="../img/4.jpg" alt="" style="width: 789px; height: 429px;">
+            </div>
+        </div>
+    </div>
+    <script>
+        let btn = document.querySelectorAll(".data");
+        let imgA = document.querySelectorAll(".c");
+        console.log(imgA);
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].onclick = function () {
+                for(let j = 0; j< btn.length;j++){
+                    animate(imgA[j], {
+                    "width": "100",
+                },
+                )
+            }
+                animate(imgA[i], {
+                    "width": "789",
+                },
+                )
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

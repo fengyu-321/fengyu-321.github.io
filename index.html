@@ -1,13 +1,773 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style/css1.css">
+    <link rel="stylesheet" href="./style/xuanxiangka.css">
+    <title>首页 2023年三月</title>
+    <style>
+        body {
+            line-height: 1;
+            background-color: rgb(72, 72, 72);
+            width: 100%;
+            min-width: 1140px;
+            -webkit-text-size-adjust: 100%;
+            position: relative;
+        }
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .news_list {
+            width: 1000px;
+            margin: 70px auto 0;
+            text-align: left;
+        }
+
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+
+        li {
+            list-style: none;
+            display: list-item;
+            text-align: -webkit-match-parent;
+
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .news_list li {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .news_list {
+            width: 1000px;
+            margin: 70px auto 0;
+            text-align: left;
+        }
+
+        .news_list li .news_day {
+            position: absolute;
+            left: -10px;
+            top: -16px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 35px;
+            font-weight: bold;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .news_list li .news_title {
+            word-break: break-all;
+            line-height: 1.5;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .news_list li a {
+            position: relative;
+            display: block;
+            /* padding: 35px 45px 32px; */
+            padding: 10px;
+            padding-top: 50px;
+            border-bottom: 5px solid rgb(72, 72, 72);
+            background-color: #d71617;
+        }
+
+        .news_list li .bg {
+            content: '';
+            position: absolute;
+            left: -1%;
+            top: -18%;
+            right: 0;
+            width: 102%;
+            height: 125%;
+            background: rgb(124, 123, 123);
+            transform-style: preserve-3d;
+            animation: 0.9s ease-in-out n infinite;
+            transform: rotateZ(-0.3deg);
+            display: none;
+            z-index: -1;
+            margin-bottom: 40px;
+        }
+
+        @keyframes n {
+            form {
+                transform: rotate3d(1, 1, 1, 0deg) left;
+            }
+
+            25% {
+                transform: skewX(8deg);
+            }
+
+            50% {
+                transform: skewX(-8deg);
+            }
+
+            75% {
+                transform: skewX(8deg);
+            }
+
+            to {
+                transform: rotate3d(1, 1, 1, -1.4deg) skewX(0deg);
+
+            }
+        }
+
+        @keyframes s {
+            0% {
+                -webkit-transform: scale(0.001);
+                transform: scale(0.001);
+            }
+
+            30% {
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+
+            60% {
+                -webkit-transform: scale(0.96);
+                transform: scale(0.96);
+            }
+
+            80% {
+                -webkit-transform: scale(1.03);
+                transform: scale(1.03);
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>首 页</h1>
-    <img src="./img/火.gif" style="width:500px;height:500px" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="./js/animate.js"></script>
+    <div class="backTop"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></div>
+    <!-- <div class="container-fluid"> -->
+    <header id="header">
+        <div class="logo col-md-1">
+            <a href="#"><span class="glyphicon glyphicon-lamp" aria-hidden="true"></span></a>
+        </div>
+        <div class="preview-devices col-md-5" style="font-size: 22px;color:white;letter-spacing: 20px;">
+
+            <span></span>
+
+        </div>
+        <div class="current-template col-md-2"><a href="http://www.mobanwang.com/mb/202302/20544.html"
+                class="template-home" style="color: white;">？</a></div>
+        <div class="navigate col-md-1">
+        </div>
+    </header>
+    <!-- </div> -->
+    <div class="data">
+
+
+        <ul class="news_list">
+            <li id="51299" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">html+css项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">『PERSONA O.A.』サービス終了のお知らせ</p>
+            </a>
+        -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>学习平台调查表</p>
+                                </div>
+                                <img src="./略缩图/调查表.png" alt="" onclick="window.open('./others/htmlcss调查表.html')">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>电影院座椅</p>
+                                </div>
+                                <img src="./略缩图/座椅.png" alt="" onclick="window.open('./others/座椅.html')">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>表格-简历</p>
+                                </div>
+                                <img src="./略缩图/简历.png" alt="" onclick="window.open('./others/表格-简历.html')">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>新闻栏排版</p>
+                                </div>
+                                <img src="./略缩图/新闻.png" alt="" onclick="window.open('./others/新闻.html')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="50678" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">html+css项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">バレンタインOVAチラ見せ潜入投票開催！</p>
+            </a>
+        -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="50668" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">原生JavaScript项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">ルブランカレー盛り付けキャンペーン入選者発表</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+            <li id="50587" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">原生JavaScript项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">P5A EXHIBITION開催決定！</p>
+            </a>
+        -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="50426" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">原生JavaScript项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">ハライチ岩井・福山潤出演「純喫茶ルブラン屋根裏放送局R」放送決定！</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+            <li id="50425" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">jQuery项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">副島成記描き下ろしイラスト公開！</p>
+            </a>
+        -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="" >
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="50372" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">jQuery+BootStrap项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">福山潤さん＆宮野真守さん出演TVアニメ「ペルソナ５」公式Webラジオ“カイトーク！”最終回</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+            <li id="50371" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">AJAX项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">TVアニメ「ペルソナ５」公式Webラジオ“カイトーク！”DJCDvol.1のジャケットイラストを解禁！</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+            <li id="50261" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">CSS3项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">第12巻にOVA『A Magical Valentine's Day』収録決定！あらすじも公開！</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+            <li id="50165" class="col-md-12">
+                <a href="javascript:void(0)">
+                    <div class="bg"></div>
+                    <p class="news_day">CSS3项目</p>
+                </a>
+                <div class="bottom">
+                    <!--<p class="news_title">公式Webラジオ「カイトーク」最終回ゲストが福山潤さん＆宮野真守さんに決定！</p>
+                -->
+                    <div class="big">
+                        <div class="small">
+                            <div class="c">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                            <div class="c" style="width: 100px;">
+                                <div class="data">
+                                    <p>我的个人拉萨之旅｜｜故事之城</p>
+                                </div>
+                                <img src="./img/cat.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </li>
+        </ul>
+
+
+        <div class="star">
+            <ul>
+                <li class="star3 pos1 in"></li>
+                <li class="star6 pos2 in"></li>
+                <li class="star3 pos3 in"></li>
+                <li class="star6 pos4 in"></li>
+                <li class="star4 pos5 in"></li>
+                <li class="star5 pos6 in"></li>
+                <li class="star6 pos7 in"></li>
+                <li class="star3 pos8 in"></li>
+                <li class="star6 pos9 in"></li>
+                <li class="star4 pos10 in"></li>
+                <li class="star6 pos11 in"></li>
+                <li class="star3 pos12 in"></li>
+                <li class="star6 pos13 in"></li>
+                <li class="star4 pos14 in"></li>
+                <li class="star4 pos15 in"></li>
+                <li class="star4 pos16 in"></li>
+                <li class="star3 pos17 in"></li>
+                <li class="star6 pos18 in"></li>
+                <li class="star3 pos19 in"></li>
+                <li class="star5 pos20 in"></li>
+                <li class="star3 pos21 in"></li>
+                <li class="star6 pos22 in"></li>
+                <li class="star4 pos23 in"></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let y = Symbol.for("foo");
+        let b = Symbol.for("foo");
+        console.log(y === b);
+        console.log(Symbol.keyFor(y));
+        console.log(y.description);
+        let liData = document.querySelectorAll("li");
+        let liBefore = document.querySelectorAll(".news_list li .bg");
+        console.log(liBefore[0]);
+        for (let i = 0; i < liBefore.length; i++) {
+            liData[i].onmouseover = function () {
+                liBefore[i].style.display = "block";
+            }
+            liData[i].onmouseout = function () {
+                liBefore[i].style.display = "none";
+            }
+        }
+        let logo = document.querySelector("#header .logo");
+        let backTop = document.querySelector(".backTop");
+        logo.onclick = function () {
+            window.scroll(0, 0);
+        }
+        backTop.onclick = function () {
+            window.scroll(0, 0);
+        }
+        let btn = document.querySelectorAll(".c .data");
+        let imgA = document.querySelectorAll(".c");
+        let arr = [4, 8, 12, 16, 20, 24, 28, 32, 36, 40];
+        for (let k = 0; k < 10; k++) {
+            for (let i = arr[k] - 4; i < arr[k]; i++) {
+                btn[i].onclick = function () {
+                    for (let j = arr[k] - 4; j < arr[k]; j++) {
+                        animate(imgA[j], {
+                            "width": "100",
+                        },
+                        );
+                        /* console.log("i=",i);
+                        console.log("j=",j); */
+                    }
+                    animate(imgA[i], {
+                        "width": "600",
+                    },
+                    )
+                }
+            }
+        }
+
+    </script>
 </body>
+
 </html>

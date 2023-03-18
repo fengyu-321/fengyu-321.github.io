@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://www.baidu.com" method="get">
+        <h1>粤嵌学习平台调查表</h1>
+        <p>感谢您抽出时间帮助我们改进平台</p>
+        <label><b>Name:</b><input type="text" name="name" placeholder="请输入你的姓名" /></label><br />
+        <label><b>Email:</b><input type="email" name="email" placeholder="邮箱" /></label><br />
+        <label><b>Age:</b><input type="number" name="age" placeholder="年龄" max="99" min="10" /></label><br />
+        请问你的职业是？
+        <select>
+            <option name="zhiye" value="zy1">职业1</option>
+            <option name="zhiye" value="zy2">职业2</option>
+            <option name="zhiye" value="zy3">职业3</option>
+            <option name="zhiye" value="zy4">职业4</option>
+            <option name="zhiye" value="zy5">职业5</option>
+            <option selected>请选择你的职业</option>
+        </select>
+        <p>你会向朋友退检粤嵌学习平台吗？</p>
+        <p>
+            <input type="radio" name="em">会
+            <input type="radio" name="em">可能会
+            <input type="radio" name="em">不会
+        </p>
+        <p>
+            你最喜欢粤嵌学习平台的功能是什么？
+        </p>
+        <p>
+            <select>
+                <optgroup label="功能1">
+                    <option name="action" value="hu">忽</option>
+                    <option name="action" value="feng" >逢</option>
+                </optgroup>
+                <optgroup label="功能2">
+                    <option name="action" value="zuo">作</option>
+                    <option name="action" value="gu" >古</option>
+                </optgroup>
+
+                <option selected>请选择</option>
+            </select>
+        </p>
+        <p>你希望看到什么改进？（可以全选）</p>
+        <p> <input type="checkbox" name="hobby" value="QDXM" >前端项目
+            <input type="checkbox" name="hobby" value="HDXM" >后端项目
+            <input type="checkbox" name="hobby" value="SJKSH" >数据可视化
+            <input type="checkbox" name="hobby" value="KC">课程
+            <input type="checkbox" name="hobby" value="BJXXFW" >班级学习氛围
+            <input type="checkbox" name="hobby" value="DY">答疑
+            <input type="checkbox" name="hobby" value="SP">视频
+            <input type="checkbox" name="hobby" value="FJKC">附加课程
+        </p>
+        <p>有什么意见或者建议吗？</p>
+        <p><textarea name="textarea" id="" cols="20" rows="3" placeholder="abcdefghijklmn"></textarea></p>
+        <button type="submit">提交</button>
+        <input type="image" src="../img/submit.png">
+    </form>
+</body>
+
+</html>

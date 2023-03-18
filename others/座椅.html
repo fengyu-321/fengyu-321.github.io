@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /*空*/
+    body{
+        background-color: rgba(191, 191, 186, 0.879);
+        margin: 20%;
+    }
+    .seats-0 {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+    }
+
+    /*已售*/
+    .seats-2 {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-position: 0 -120px;
+        background-image: url(../img/seats.png);
+        background-size: 100% auto;
+    }
+
+    /*可售*/
+    .seats-1 {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-image: url(../img/seats.png);
+        background-size: 100% auto;
+    }
+
+    /*已选*/
+    .seats-3 {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-position: 0 -60px;
+        background-image: url(../img/seats.png);
+        background-size: 100% auto;
+        color: red;
+    }
+</style>
+<script>
+    var seatsArr = [
+        [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+        [2, 2, 1, 1, 2, 2, 1, 1, 1, 1],
+        [1, 1, 3, 3, 1, 2, 2, 1, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1]];
+    for (let k in seatsArr) {
+        for (let j in seatsArr[k]) {
+            console.log(seatsArr[k][j]);
+            switch (seatsArr[k][j]) {
+                case 0:
+                    document.write('<span class="seats-0"></span>');
+                    break;
+                case 1:
+                    document.write('<span class="seats-1"></span>');
+                    break;
+                case 2:
+                    document.write('<span class="seats-2"></span>');
+                    break;
+                case 3:
+                    document.write('<span class="seats-3"></span>');
+                    break;}}
+        document.write("<br/>");
+    }
+</script>
+
+<body>
+    <!-- <span class="seats-1"></span>
+    <span class="seats-2"></span>
+    <span class="seats-0"></span>
+    <span class="seats-3"></span> -->
+</body>
+
+</html>

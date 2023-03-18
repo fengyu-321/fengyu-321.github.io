@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            transition: all 2s;
+        }
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+
+            position: relative;
+            text-align: center;
+        }
+
+        .header,
+        .bottom {
+            background: linear-gradient(999deg, black, white);
+            width: 100%;
+            height: 290px;
+            color: rgb(154, 0, 154);
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 300px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .data {
+            border: 0;
+            padding: 0;
+            margin: 0 auto;
+            width: 80%;
+            height: 800px;
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 800px;
+            color: aliceblue;
+        }
+
+
+        .right {
+            /*  position: absolute; */
+            position: fixed;
+            z-index: 55;
+            right: 0;
+            bottom: 90px;
+            width: 60px;
+            height: 610px;
+
+        }
+
+        .box {
+            float: right;
+            width: 50px;
+            height: 50px;
+            border: 2px gray solid;
+            margin: 0;
+            position: relative;
+            background-color: white;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="header">页面头部</div>
+        <div class="data"
+            style="background: linear-gradient(45deg,gray,yellow,pink,purple, skyblue, black, aqua, lightgreen);">直播
+        </div>
+        <div class="data" style="background: linear-gradient(45deg, green,black, skyblue);">动画</div>
+        <div class="data" style="background: linear-gradient(45deg, pink, skyblue, black, aqua, lightgreen);">番剧
+        </div>
+        <div class="data" style="background: linear-gradient(45deg, pink, skyblue, black, aqua, purple);">音乐</div>
+        <div class="data" style="background: linear-gradient(45deg,skyblue, pink,  black, aqua, gray);">舞蹈</div>
+        <div class="data" style="background: linear-gradient(45deg, pink, skyblue, aqua, lightgreen);">游戏</div>
+        <div class="data" style="background: linear-gradient(45deg, black, skyblue);">科技</div>
+        <div class="data" style="background: linear-gradient(45deg, blue, skyblue, black, aqua, lightgreen, black);">生活
+        </div>
+        <div class="data" style="background: linear-gradient(45deg, black, skyblue, aqua, lightgreen);">鬼畜</div>
+        <div class="data" style="background: linear-gradient(45deg, blue, skyblue);">时尚</div>
+        <div class="data" style="background-color:yellow ;">广告</div>
+        <div class="bottom">页面底部</div>
+        <div class="right">
+            <div class="box">1F</div>
+            <div class="box">2F</div>
+            <div class="box">3F</div>
+            <div class="box">4F</div>
+            <div class="box">5F</div>
+            <div class="box">6F</div>
+            <div class="box">7F</div>
+            <div class="box">8F</div>
+            <div class="box">9F</div>
+            <div class="box">10F</div>
+            <div class="box">11F</div>
+            <div class="box">Top</div>
+        </div>
+    </div>
+    <script>
+        var $ = function (ele) {
+            var dat = document.querySelectorAll(ele);
+            if (dat.length === 0) {
+                return null;
+            }
+            if (dat.length === 1) {
+                return dat[0]
+            }
+            return dat
+        }
+        var box = $(".box");
+        console.log(box);
+        for (let j = 0; j < box.length; j++) {
+            box[j].onclick = function (e) {
+
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                // 添加类名
+                e.target.classList.add("active");
+            }
+            box[0].onclick = function () {
+                // window.scroll(水平滚动条位置, 垂直滚动条位置);
+                window.scroll({
+                    top: 300
+                });
+            }
+
+            box[1].onclick = function () {
+                window.scroll({
+                    top: 1100
+                });
+            }
+
+            box[2].onclick = function () {
+                window.scroll({
+                    top: 1900
+                });
+            }
+
+            box[3].onclick = function () {
+                // window.scrollTo()的用法跟window.scroll()方法是一样的
+                window.scrollTo({
+                    top: 2700
+                });
+            }
+
+            box[4].onclick = function () {
+                window.scrollTo({
+                    top: 3500
+                });
+            }
+
+            box[5].onclick = function () {
+                window.scrollTo({
+                    top: 4300
+                });
+            }
+
+            box[6].onclick = function () {
+                window.scroll({
+                    top: 5100
+                });
+            }
+
+            box[7].onclick = function () {
+                window.scroll({
+                    top: 5900
+                });
+            }
+            box[8].onclick = function () {
+                window.scroll({
+                    top: 6700
+                });
+            }
+            box[9].onclick = function () {
+                window.scroll({
+                    top: 7500
+                });
+            }
+            box[10].onclick = function () {
+                window.scroll({
+                    top: 8300
+                });
+            }
+            box[11].onclick = function () {
+                window.scroll(0, 0);
+            }
+        }
+        intervalID1 = window.setInterval(function () {
+            var now = Number(document.documentElement.scrollTop);
+            console.log("现在的滚动条scrollTop位置 ："+now);
+            //1
+            if (now >=300 && now< 1100) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[0].classList.add("active");
+            }
+            //2
+            if (now >=1100 && now< 1900) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[1].classList.add("active");
+            }
+            //3
+            if (now >=1900 && now< 2700) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[2].classList.add("active");
+            }
+            //4
+            if (now >=2700 && now< 3500) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[3].classList.add("active");
+            }
+            //5
+            if (now >=3500 && now< 4300) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[4].classList.add("active");
+            }
+            //6
+            if (now >=4300 && now< 5100) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[5].classList.add("active");
+            }
+            //7
+            if (now >=5100 && now< 5900) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[6].classList.add("active");
+            }
+            //8
+            if (now >=5900 && now< 6700) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[7].classList.add("active");
+            }
+            //9
+            if (now >=6700 && now< 7500) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[8].classList.add("active");
+            }
+            //10
+            if (now >=7500 && now< 8300) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[9].classList.add("active");
+            }
+            //11
+            if (now >=8300 && now< 9100) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+                box[10].classList.add("active");
+            }
+            //12 top
+            if (now <200 || now> 9300) {
+                for (var i = 0; i < box.length; i++) {
+                    box[i].classList.remove("active");
+                }
+            }
+           
+        }, 400);
+    </script>
+</body>
+
+</html>

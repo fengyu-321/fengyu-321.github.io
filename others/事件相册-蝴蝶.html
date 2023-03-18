@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            font-size: 30px;
+        }
+
+        .container {
+            position:relative;
+            overflow: hidden;
+            width: 900px;
+            height: 600px;
+            margin: 0 auto;
+            left: -85px;
+            top: 50px;
+            margin-top: 1px;
+        }
+
+        .lift {
+            /* vh(viewport height)是视口单位  100vh代表整个视口的高度 */
+            height: 900px;
+            text-align: center;
+
+        }
+
+        .big {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            border: 5px solid #747272;
+            width: 1100px;
+            height: 700px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .sidebar {
+            position: absolute;
+            width: 200px;
+            height: 900px;
+            /* height: 408px; */
+            margin-top: 60px;
+        }
+
+        .sidebar ul .li {
+            width: 185px;
+            height: 115px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 14px;
+            margin-top: 5px;
+            position: relative;
+            cursor: pointer;
+            /* background: white; */
+        }
+
+        .sidebar ul .li img {
+            width: 180px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: white;
+
+        }
+
+        /*  .sidebar ul li.active span {
+             display: block;
+         } */
+
+        .m {
+            border: red solid 5px;
+            position: absolute;
+            width: 175px;
+            height: 100px;
+            top: 0px;
+        }
+
+        .box2 {
+
+            width: 0px;
+            height: 0px;
+            /* 设置四边边框宽度，将颜色设置为透明 */
+            border: 11px solid transparent;
+            border-right: 11px solid red;
+            position: absolute;
+            left: -24px;
+            top: 45px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big">
+        <!-- 内容层 -->
+        <div class="container">
+            <div class="lift lift1">
+                <img src="../img/t1.png">
+                <img src="../img/t2.png">
+                <img src="../img/t3.png">
+                <img src="../img/t4.png">
+                <img src="../img/t5.png">
+            </div>
+
+        </div>
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="m"><div class="box2"></div></div>
+            
+            <ul>
+                <div class="li"><img src="../img/t1.png"></div>
+                <div class="li"><img src="../img/t2.png"></div>
+                <div class="li"><img src="../img/t3.png"></div>
+                <div class="li"><img src="../img/t4.png"></div>
+                <div class="li"><img src="../img/t5.png"></div>
+                <!--  <li class="backUp">Top</li> -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 获取dom对象的方法
+        function $(cssSelector) {
+            var dom = document.querySelectorAll(cssSelector);
+
+            if (dom.length === 0) {
+                return null;
+            }
+
+            if (dom.length === 1) {
+                return dom[0];
+            }
+
+            return dom;
+        }
+        // 获取相关dom对象
+        var lifts = $(".container .lift");
+        var sidebarLis = $(".sidebar ul .li");
+        var m = $(".m");
+        console.log(lifts);
+        console.log(sidebarLis);
+        for (let i = 0; i < sidebarLis.length; i++) {
+            sidebarLis[i].onclick = function () {
+                animate(lifts, {
+                    "margin-top": i * 600 * -1,
+                },
+                )
+                animate(m, {
+                    "top": i * 120,
+                },
+                )
+            }
+        }
+    </script>
+</body>
+
+</html>

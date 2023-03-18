@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .big {
+            width: 320px;
+            height: 580px;
+            
+            margin: 0 auto;
+            margin-bottom: 7px;
+        }
+        .big img{
+            border: 3px rgb(0, 0, 0) solid;
+            border-radius: 5.3%;
+            width: 320px;
+            height: 580px;
+        }
+        .small {
+            float: left;
+            width: 9%;
+            height: 130px;
+            border: black 5px solid;
+        }
+        .small img{
+            width:108px;
+            height:130px;
+        }
+        .bottom {
+            width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+    <div class="all">
+        <div class="big"><img src="../img/相册/3.jpg"></div>
+        <div class="bottom">
+            <div class="small"><img src="../img/相册/1.jpg"></div>
+            <div class="small"><img src="../img/相册/2.jpg"></div>
+            <div class="small"><img src="../img/相册/3.jpg"></div>
+            <div class="small"><img src="../img/相册/4.jpg"></div>
+            <div class="small"><img src="../img/相册/5.jpg"></div>
+            <div class="small"><img src="../img/相册/6.jpg"></div>
+            <div class="small"><img src="../img/相册/7.jpg"></div>
+            <div class="small"><img src="../img/相册/8.jpg"></div>
+            <div class="small"><img src="../img/相册/9.jpg"></div>
+            <div class="small"><img src="../img/相册/10.jpg" ></div>
+        </div>
+    </div>
+    <script>
+        let pray = document.querySelector(".big");
+        let see = document.querySelector(".bottom");
+        let small = document.querySelectorAll(".small");
+        let smallImg = document.querySelectorAll(".small img");
+        /* console.log(smallImg);测试
+        console.log(small[0]);
+        console.log(small);
+        console.log(pray); */
+        for (let i = 0; i < smallImg.length; i++) {
+            smallImg[i].onmouseover = function(){
+                var data = document.querySelector(".big img");
+                data.src = this.src;
+                /* console.log(this); 测试当前指向*/
+               /*  console.log(data); */
+                
+           
+            
+        }
+            }
+        
+    </script>
+</body>
+
+</html>
