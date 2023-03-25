@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bottom {
+            width: 1200px;
+
+        }
+
+        ul {
+            margin: 0 auto;
+            display: flex;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            padding: 0;
+            list-style: none;
+        }
+
+
+        ul li {
+            vertical-align: top;
+            width: 180px;
+            height: 283px;
+            margin-right: 16px;
+            margin-bottom: 34px;
+
+        }
+
+        ul li a {
+            /*  list-style:armenian; */
+            width: 180px;
+            height: 240px;
+        }
+
+        ul li img {
+            cursor: pointer;
+            width: 180px;
+            height: 240px;
+        }
+
+        ul li.title {
+            color: gray
+        }
+
+        p {
+            margin: 0;
+            padding: 2px 0;
+            width: 180px;
+            height: 16px;
+            overflow: hidden;
+        }
+
+        .item {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .small {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .top {
+            width: 1160px;
+            height: 190px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column
+        }
+
+        .title {
+            display: flex;
+            width: 1160px;
+            height: 30px;
+            font-size: 12px;
+            padding: 5px;
+            font-family: Arial, Microsoft YaHei, Microsoft Sans Serif, Microsoft SanSerf, 微软雅黑;
+        }
+
+        .t {
+            cursor: pointer;
+            padding: 0 10px;
+            margin: 0 4px;
+            color: rgba(0, 0, 0, .87);
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .jump{
+            width: 80%;
+            height: 80%;
+        }
+        .active {
+            color: rgb(71, 71, 246);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../js/AllLabel.js"></script>
+    <div class="top">
+        <div class="title">题材</div>
+        <div class="title">地区</div>
+        <div class="title">进度</div>
+        <div class="title">收费</div>
+        <div class="title">排序</div>
+    </div>
+    <ul class="bottom">
+    </ul>
+    <script>
+        var index = 39;
+        var query = {
+            styles: -1,
+            areas: -1,
+            status: -1,
+            prices: -1,
+            orders: 0,
+            pageNum:index
+        };
+        var t = document.querySelectorAll(".t");
+        var title = document.querySelectorAll(".title");
+        var active = document.querySelector(".active");
+        var token = "VUfQal5rdb2VlsCq";
+        var num = 0;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://apis.netstart.cn/bcomic/ClassPage?styleId=-1&areaId=-1&isFinish=-1&order=0&pageNum=1&pageSize=39&isFree=-1");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+                console.log("请求成功");
+                var res = JSON.parse(xhr.responseText);
+                var data = res.data;
+                let bottom = document.querySelector(".bottom");
+                for (let k = 0; k < data.length; k++) {
+                    bottom.innerHTML = data.map(function (item) {
+                        return '<li><a href="https://manga.bilibili.com/detail/mc' + item.season_id + '?from=manga_index" target="blank"><img src="' + item.vertical_cover + '"><p class="item">' + item.title + "</p></a><p class='small'>更新至 " + item.last_ord + " 话</p></li>";
+                    }).join("")
+                }
+            }
+        }
+
+        function siblings(elm) {
+            var a = [];
+            var p = elm.parentNode.children;
+            for (var i = 0, pl = p.length; i < pl; i++) {
+                if (p[i] !== elm) a.push(p[i]);
+            }
+            return a;
+        }
+
+        for (let k in AllLabel) {
+            let newD = document.createElement("div");
+            newD.innerHTML = AllLabel[k].map(function (item) {
+                return '<div class="t" data-animal-type=' + (num + 100) + ' id="' + item.id + '">' + item.name + "</div>";
+            }).join("");//添加自定义属性
+            (title[num]).appendChild(newD);
+            num++
+        };
+        t = document.querySelectorAll(".t");
+        for (let i = 0; i < t.length; i++) {
+            if (i === 0) {
+                (t[0]).classList.add("active");
+                (t[17]).classList.add("active");
+                (t[22]).classList.add("active");
+                (t[25]).classList.add("active");
+                (t[29]).classList.add("active");
+            }
+
+
+            //跳转点击事件
+            t[i].onclick = function () {
+                for (let i = 0; i < siblings(this).length; i++) {
+                    siblings(this)[i].classList.remove("active")
+                }
+                this.classList.add("active");
+                console.log(this.dataset.animalType);
+
+                if (this.dataset.animalType == 100) {
+                    query.styles = Number(this.id);
+                } else if (this.dataset.animalType == 101) {
+                    query.areas = Number(this.id);
+                } else if (this.dataset.animalType == 102) {
+                    query.status = Number(this.id);
+                } else if (this.dataset.animalType == 103) {
+                    query.prices = Number(this.id);
+                } else if (this.dataset.animalType == 104) {
+                    query.orders = Number(this.id);
+                }//自定义属性的属性值判断数组,把id赋值给对象
+                console.log(query);
+
+                bottom = document.querySelector(".bottom");
+                bottom.innerHTML="<img class='jump' src='../img/4.gif'>";//加载图片
+                let str = "https://apis.netstart.cn/bcomic/ClassPage?styleId="+query.styles+"&areaId="+query.areas+"&isFinish="+query.status+"&order="+query.orders+"&pageNum=1&pageSize="+query.pageNum+"&isFree="+query.prices+"";    
+                console.log(str);
+                xhr.open("GET", str);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.status === 200 && xhr.readyState === 4) {
+                        var res = JSON.parse(xhr.responseText);
+                        var data = res.data;
+                        let bottom = document.querySelector(".bottom");
+                        for (let k = 0; k < data.length; k++) {
+                            bottom.innerHTML = data.map(function (item) {
+                                return '<li><a href="https://manga.bilibili.com/detail/mc' + item.season_id + '?from=manga_index" target="blank"><img src="' + item.vertical_cover + '"><p class="item">' + item.title + "</p></a><p class='small'>更新至 " + item.last_ord + " 话</p></li>";
+                            }).join("")
+                        }
+                    }
+                }
+            }
+
+        }
+
+        //滚动条事件;节流
+        function mythrottle1(func, wait) {
+            var old = 0;
+            var context = null;
+            var args = null;
+            return function () {
+                context = this;
+                args = arguments;
+                var now = new Date().getTime();
+                if (now - old > wait) {
+                    func.apply(context, args)
+                    old = now;
+                }
+            }
+        }
+        function scrolls(){
+            var curScrollTop = Math.floor(window.pageYOffset);
+            if (curScrollTop>index*20) {
+                index+=12;
+                query.pageNum=index;
+                bottom = document.querySelector(".bottom");
+                let str = "https://apis.netstart.cn/bcomic/ClassPage?styleId="+query.styles+"&areaId="+query.areas+"&isFinish="+query.status+"&order="+query.orders+"&pageNum=1&pageSize="+query.pageNum+"&isFree="+query.prices+"";    
+                console.log(str);
+                xhr.open("GET", str);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.status === 200 && xhr.readyState === 4) {
+                        console.log("请求成功");
+                        var res = JSON.parse(xhr.responseText);
+                        var data = res.data;
+                        let bottom = document.querySelector(".bottom");
+                        for (let k = 0; k < data.length; k++) {
+                            bottom.innerHTML = data.map(function (item) {
+                                return '<li><a href="https://manga.bilibili.com/detail/mc' + item.season_id + '?from=manga_index" target="blank"><img src="' + item.vertical_cover + '"><p class="item">' + item.title + "</p></a><p class='small'>更新至 " + item.last_ord + " 话</p></li>";//渲染
+                            }).join("")
+                        }
+                    }
+                }
+            }
+        }
+            window.onscroll=mythrottle1(scrolls, 400);
+       
+       
+        /* for(let i = 0 ; i<btn.length;i++){
+            console.log(Number(active.textContent));
+            btn[i].onclick = function(){
+                
+                index = i;
+                if(i==0){
+                    btn = document.querySelectorAll(".b");
+                    active = document.querySelector(".active");
+                    if(Number(active.textContent)>=2){
+                    index = Number(active.textContent)-1;
+                    
+                    for(let i = 0 ; i<btn.length;i++){
+                    btn[i].classList.remove("active"); 
+                }
+               btn[Number(active.textContent)-1].classList.add("active");
+                    }
+                }
+                if(i>0&&i<11){
+                    for(let i = 0 ; i<btn.length;i++){
+                    btn[i].classList.remove("active"); 
+                }
+               btn[i].classList.add("active");
+                }
+                if(i==11){
+                    btn = document.querySelectorAll(".b");
+                    active = document.querySelector(".active");
+                    if(Number(active.textContent)<=9){
+                    index = Number(active.textContent)+1;
+                   
+                    for(let i = 0 ; i<btn.length;i++){
+                    btn[i].classList.remove("active"); 
+                }
+               btn[Number(active.textContent)+1].classList.add("active");
+                    }
+                }
+                var xhr = new XMLHttpRequest();
+        xhr.open("POST","https://v2.alapi.cn/api/joke");
+        var str = "token=VUfQal5rdb2VlsCq&page="+index+"&num=10";
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(str);
+                //渲染
+        xhr.onreadystatechange = function(){
+            if(xhr.status===200&&xhr.readyState===4){
+                var res = JSON.parse(xhr.responseText);
+                if(res.data !==null) {
+                    data.innerHTML ='<tr><th>序号</th><th>标题</th><th class="data">内容</th></tr>' +res.data.map(function(item,index){
+                        return '<tr><td>'+(Number(index)+1)+'</td><td>'+item.title+"</td><td>"+item.content+"</td></tr>"
+                    }).join("");
+                }
+            }
+        }
+            }
+        } */
+
+
+    </script>
+</body>
+
+</html>

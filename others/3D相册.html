@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+    </script>
+    <style type="text/css">
+        img {
+            width: 400px;
+            height: 400px;
+        }
+
+        .box {
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        /* .container:hover {
+            animation-play-state: paused;
+        }
+ */
+        @keyframes roll {
+            from {
+                transform: rotate3d(1, 1, 1, 0deg) left;
+            }
+
+            to {
+                transform: rotate3d(1, 1, 1, 360deg)
+            }
+        }
+
+        @keyframes left1 {
+            from {
+                left: -200px;
+            }
+
+            70% {
+                left: -500px;
+            }
+
+            to {
+                left: -200px;
+            }
+        }
+
+        @keyframes left2 {
+            from {
+                left: -200px;
+            }
+
+            70% {
+                left: -400px;
+            }
+
+            to {
+                left: -200px;
+            }
+        }
+
+        @keyframes left3 {
+            from {
+                left: -200px;
+            }
+
+            70% {
+                left: -300px;
+            }
+
+            to {
+                left: -200px;
+            }
+        }
+
+        @keyframes left4 {
+            from {
+                left: 200px;
+            }
+
+            70% {
+                left: 500px;
+            }
+
+            to {
+                left: 200px;
+            }
+        }
+
+        @keyframes left5 {
+            from {
+                left: 200px;
+            }
+
+            70% {
+                left: 400px;
+            }
+
+            to {
+                left: 200px;
+            }
+        }
+
+        @keyframes left6 {
+            from {
+                left: 200px;
+            }
+
+            70% {
+                left: 300px;
+            }
+
+            to {
+                left: 200px;
+            }
+        }
+
+        /*  */
+        @keyframes top1 {
+            from {
+                top: -200px;
+            }
+
+            70% {
+                top: -500px;
+            }
+
+            to {
+                top: -200px;
+            }
+        }
+
+        @keyframes top2 {
+            from {
+                top: -200px;
+            }
+
+            70% {
+                top: -400px;
+            }
+
+            to {
+                top: -200px;
+            }
+        }
+
+        @keyframes top3 {
+            from {
+                top: -200px;
+            }
+
+            70% {
+                top: -300px;
+            }
+
+            to {
+                top: -200px;
+            }
+        }
+
+        /*  */
+        @keyframes top4 {
+            from {
+                top: 200px;
+            }
+
+            70% {
+                top: 500px;
+            }
+
+            to {
+                top: 200px;
+            }
+        }
+
+        @keyframes top5 {
+            from {
+                top: 200px;
+            }
+
+            70% {
+                top: 400px;
+            }
+
+            to {
+                top: 200px;
+            }
+        }
+
+        @keyframes top6 {
+            from {
+                top: 200px;
+            }
+
+            70% {
+                top: 300px;
+            }
+
+            to {
+                top: 200px;
+            }
+        }
+
+        /*  */
+        @keyframes Z1 {
+            from {
+                transform: translateZ(-200px);
+            }
+
+            70% {
+                transform: translateZ(-500px);
+            }
+
+            to {
+                transform: translateZ(-200px);
+            }
+        }
+
+        @keyframes Z2 {
+            from {
+                transform: translateZ(-200px);
+            }
+
+            70% {
+                transform: translateZ(-400px);
+            }
+
+            to {
+                transform: translateZ(-200px);
+            }
+        }
+
+        @keyframes Z3 {
+            from {
+                transform: translateZ(-200px);
+            }
+
+            70% {
+                transform: translateZ(-300px);
+            }
+
+            to {
+                transform: translateZ(-200px);
+            }
+        }
+
+        /*  */
+        @keyframes Z4 {
+            from {
+                transform: translateZ(200px);
+            }
+
+            70% {
+                transform: translateZ(500px);
+            }
+
+            to {
+                transform: translateZ(200px);
+            }
+        }
+
+        @keyframes Z5 {
+            from {
+                transform: translateZ(200px);
+            }
+
+            70% {
+                transform: translateZ(400px);
+            }
+
+            to {
+                transform: translateZ(200px);
+            }
+        }
+
+        @keyframes Z6 {
+            from {
+                transform: translateZ(200px);
+            }
+
+            70% {
+                transform: translateZ(300px);
+            }
+
+            to {
+                transform: translateZ(200px);
+            }
+        }
+
+        .box div {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            border: #21a1fdeb 1px solid;
+        }
+
+        .container {
+            /*  transform: rotateX(41deg); */
+            /*  transform: rotateY(41deg); */
+            width: 400px;
+            height: 400px;
+            margin: 10% auto;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: roll 10s linear infinite;
+        }
+
+        .box div:nth-child(1) {
+            left: -200px;
+            background-color: black;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left1 10s linear infinite;
+        }
+
+        .box div:nth-child(2) {
+            left: -200px;
+            background-color: black;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left2 10s linear infinite;
+        }
+
+        .box div:nth-child(3) {
+            left: -200px;
+            background-color: black;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left3 10s linear infinite;
+        }
+
+        .box div:nth-child(4) {
+            background-color: orange;
+            top: 200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top4 10s linear infinite;
+        }
+
+        .box div:nth-child(5) {
+            background-color: orange;
+            top: 200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top5 10s linear infinite;
+        }
+
+        .box div:nth-child(6) {
+            background-color: orange;
+            top: 200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top6 10s linear infinite;
+        }
+
+        .box div:nth-child(7) {
+            background-color: pink;
+            top: -200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top1 10s linear infinite;
+        }
+
+        .box div:nth-child(8) {
+            background-color: pink;
+            top: -200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top2 10s linear infinite;
+        }
+
+        .box div:nth-child(9) {
+            background-color: pink;
+            top: -200px;
+            transform: rotateX(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: top3 10s linear infinite;
+        }
+
+        .box div:nth-child(10) {
+            background-color: purple;
+            left: 200px;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left4 10s linear infinite;
+        }
+
+        .box div:nth-child(11) {
+            background-color: purple;
+            left: 200px;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left5 10s linear infinite;
+        }
+
+        .box div:nth-child(12) {
+            background-color: purple;
+            left: 200px;
+            transform: rotateY(270deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: left6 10s linear infinite;
+        }
+
+        .box div:nth-child(13) {
+            background-color: green;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z1 10s linear infinite;
+            transform: translateZ(-200px);
+
+        }
+
+        .box div:nth-child(14) {
+            background-color: green;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z2 10s linear infinite;
+            transform: translateZ(-200px)
+        }
+
+        .box div:nth-child(15) {
+            background-color: green;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z3 10s linear infinite;
+            transform: translateZ(-200px)
+        }
+
+        .box div:nth-child(16) {
+            background-color: red;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z4 10s linear infinite;
+            transform: translateZ(200px)
+        }
+
+        .box div:nth-child(17) {
+            background-color: red;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z5 10s linear infinite;
+            transform: translateZ(200px)
+        }
+
+        .box div:nth-child(18) {
+            background-color: red;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            animation: Z6 10s linear infinite;
+            transform: translateZ(200px)
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            <div><img src="../img/images/1.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/1.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/1.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/2.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/2.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/2.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/3.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/3.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/3.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/4.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/4.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/4.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/6.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/6.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/6.jpeg" alt="图片获取失败"></div>
+            <div><img src="../img/images/5 (1).jpg" alt="图片获取失败"></div>
+            <div><img src="../img/images/5 (1).jpg" alt="图片获取失败"></div>
+            <div><img src="../img/images/5 (1).jpg" alt="图片获取失败"></div>
+        </div>
+    </div>
+</body>
+
+</html>

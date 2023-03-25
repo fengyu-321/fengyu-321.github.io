@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .B {
+           
+            overflow: hidden;
+            width: 400px;
+            height: 600px;
+            position: absolute;
+            top: 2%;
+            left: 33%;
+            box-shadow: gray 12px inset;
+            border-radius: 3%;
+        }
+    </style>
+</head>
+
+<body style=" background-color: beige;width: 1200px;">
+    <style class="ballNum">
+        .ball {
+            left: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            /*  box-shadow: inset 0 -5px 15px rgba(255, 255, 255, 0.4), inset -2px -1px 40px rgba(0, 0, 0, 0.4), 0 0 1px #000; */
+            box-shadow: 0 0 100px red;
+            position: absolute;
+            animation: n 4s linear infinite;
+            transform-style: preserve-3d;
+            transition: top 4s, left 4s, transform 4s;
+        }
+        div, span, p {
+    caret-color: transparent;
+}
+        .ball .ball1 {
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateX(91deg);
+            box-shadow: 0 0 100px rgb(0, 0, 0);
+        }
+
+        .ball .ball1_1 {
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateX(91deg) translateX(17px);
+            box-shadow: 0 0 100px rgb(255, 0, 0);
+        }
+
+        .ball .ball1_2 {
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateX(91deg);
+            box-shadow: 0 0 100px rgb(255, 1, 1);
+        }
+
+        .ball .ball2 {
+            position: absolute;
+            top: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball3 {
+            position: absolute;
+            top: 10px;
+            left: 35px;
+            width: 140px;
+            height: 120px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball4 {
+            position: absolute;
+            top: 10px;
+            left: -35px;
+            width: 140px;
+            height: 120px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball5 {
+            position: absolute;
+            top: -17px;
+            width: 130px;
+            height: 120px;
+            border-radius: 70px;
+            transform: rotateX(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball6 {
+            position: absolute;
+            top: 35px;
+            width: 130px;
+            height: 120px;
+            border-radius: 70px;
+            transform: rotateX(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball7 {
+            position: absolute;
+            top: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball8 {
+            position: absolute;
+            top: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        .ball .ball9 {
+            position: absolute;
+            top: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 70px;
+            transform: rotateY(91deg);
+            box-shadow: 0 0 100px rgb(97, 5, 5);
+        }
+
+        @keyframes n {
+            form {
+                transform: rotate3d(1, 1, 1, 0deg) left;
+                 left: 0;top: 0;
+            }
+            75%{
+                top: 450px
+            }
+            to {
+                transform: rotate3d(1, 1, 1, 360deg) translate(1400px,-1800px);
+                left: 0.1px;top: 600px;
+            }
+        }
+
+        /*  .box {
+            width: 160px;
+            height: 30px;
+            background: rgb(235, 135, 168);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        } */
+        .self {
+            width: 30px;
+            height: 30px;
+           /*  background: skyblue; */
+            position: absolute;
+            left: 160px;
+            bottom: 0;
+        }
+        .self img{
+            width: 30px;
+            height: 30px;
+            /* background: skyblue; */
+            position: absolute;
+          transition: all 3s ease-in-out;
+        }
+        button{
+            z-index: 501;
+        }
+    </style>
+    <div class="B" style="background-color: black;">
+        <button
+            style="font-size:23px;cursor: pointer;text-align: center;width: 300px;line-height: 120px; height: 120px; background-color: rgb(147, 147, 147); position: absolute;top:25% ;left: 12%;color: bisque;font-family: 宋体;">
+            开始游戏(按← →移动）</button>
+        <div class="self" style="transform: 2s;"><img src="../img/滑稽.jpg" alt=""></div>
+        <div class="b"></div>
+        <div class="b"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <p></p>
+    </div>
+    <script>
+        var self = document.querySelector(".self");
+        let sty = document.querySelector("style").innerHTML;
+        let i = 1;
+        let str = "border-radius: 70px;box-shadow: inset 0 -5px 15px rgba(255, 255, 255, 0.4),  inset -2px -1px 40px rgba(0, 0, 0, 0.4),  0 0 1px #000;position: absolute;display: none;position: absolute;width: 30px;height: 30px;";
+        let getaz = function () {
+            return Math.floor(Math.random() * (100 - 20 + 1) + 20);//2~122
+        };
+        let getbutton = document.querySelector("button");
+        getbutton.onclick = function () {
+            let shut = setInterval(function () {
+                let data3 = document.querySelector('button');
+                getbutton.innerHTML = "";
+                getbutton.style.display = "none";
+                let b = document.querySelectorAll(".b");
+                for (let i = 0; i < b.length; i++) {
+                    b[b.length - 1].style.display = "none";
+                }
+                b[b.length - 1].style.display = "block";
+                let ran = getaz();
+                document.querySelector("style").innerHTML += " @keyframes mi" + (b.length - 1) + " {0%{top:0;left:0}from {top:0;left:0}to {left:" + ran * 4 + "px;" + "top:600px;}}";
+                b[b.length - 1].style.animation = "mi" + (b.length - 1) + " " + getaz() / 10 + "s  ease-in-out";
+                /*  b[b.length-1].style.animationDirection="reverse"; */
+                b[b.length - 1].style.animationFillMode = "forwards";
+                b[b.length - 1].style.WebkitAnimationFillMode = "forwards";
+
+
+                let newD = document.createElement("div");
+                let newB = document.createElement("div");
+                newB.innerHTML = '<div class="ball1"></div><div class="ball2"></div><div class="ball3"></div><div class="ball4"></div><div class="ball5"></div><div class="ball6"></div></div>';
+                newB.classList = "ball";
+                newD.style = str;
+                newD.classList = "b";
+                /* newD.innerHTML = "<div class = 'b' style='" + str + "''><div>"; */
+                let B = document.querySelector(".B");
+                B.appendChild(newD);
+                B.appendChild(newB);
+                if (document.querySelectorAll(".b").length >= 40) {
+                    clearInterval(shut);
+                    clearInterval(bit);
+                    let b = document.querySelectorAll(".b");
+                    for (let i = 0; i < b.length; i++) {
+                        b[i].style.animationPlayState="paused"
+                    }
+                    let getBall = document.querySelectorAll(".ball");
+                        for (let i = 0; i < getBall.length; i++) {
+                            getBall[i].style.animationPlayState="paused"
+                        }
+                    data3.innerHTML = "过关了";
+                    getbutton.style.display = "block";
+                    getKey = function () {}
+                }
+
+            }, 400);
+
+            let bit = setInterval(function () {
+                
+                let getB = document.querySelectorAll(".b");
+                for (let i = 0; i < getB.length; i++) {
+                    /* console.log(self.offsetLeft,self.offsetTop,getB[i].offsetLeft,getB[i].offsetTop); */
+                   /*  console.log(getB[i].offsetLeft); */
+                    /*  getB[i].style.display = "none"; */
+                    getB = document.querySelectorAll(".b");
+                    if (self.offsetLeft > getB[i].offsetLeft - 30 && self.offsetLeft < getB[i].offsetLeft + 30 && self.offsetTop > getB[i].offsetTop - 30 && self.offsetTop < getB[i].offsetTop + 30) {//球30盒子30px
+                        clearInterval(bit);
+                        clearInterval(shut);
+                        let data3 = document.querySelector('button');
+                        document.querySelector(".self img").style.opacity=0;
+                        let b = document.querySelectorAll(".b");
+                        for (let i = 0; i < b.length; i++) {
+                            /* b[i].style.display = "none"; */
+                            b[i].style.animationPlayState="paused"
+                        }
+                        let getBall = document.querySelectorAll(".ball");
+                        for (let i = 0; i < getBall.length; i++) {
+                            getBall[i].style.animationPlayState="paused"
+                        }
+                        data3.innerHTML = "游戏失败";
+                        getbutton.style.display = "block";
+                        getKey = function () {    }
+
+                    }
+                    let getBall = document.querySelectorAll(".ball");
+                    for (let i = 0; i < getBall.length; i++) {
+                       
+                      /*   console.log(getBall); */
+                       
+                    if (self.offsetLeft > getBall[i].offsetLeft - 140 && self.offsetLeft < getBall[i].offsetLeft + 140 && self.offsetTop > getBall[i].offsetTop - 140 && self.offsetTop < getBall[i].offsetTop + 140) {//球30盒子30px
+                        clearInterval(bit);
+                        clearInterval(shut);
+                        let data3 = document.querySelector('button');
+                        
+                        let b = document.querySelectorAll(".b");
+                        for (let i = 0; i < b.length; i++) {
+                           b[i].style.animationPlayState="paused"
+                        }
+                        getBall = document.querySelectorAll(".ball");
+                        for (let i = 0; i < getBall.length; i++) {
+                            getBall[i].style.animationPlayState="paused"
+                        }
+                        document.querySelector(".self img").style.opacity=0;
+                        data3.innerHTML = "游戏失败";
+                        getbutton.style.display = "block";
+                        getKey = function () {    }
+                    }
+                    }
+                }
+            }, 400);
+        }
+        /*    let getB = document.querySelectorAll(".b");
+               console.log(getB[5]);
+               console.log(getB[5].offsetLeft); */
+        /* console.log(self.offsetLeft); */
+        /*   
+           let shut1 = setInterval(function () {
+               let getB = document.querySelectorAll(".B .b");
+               for (let i = 0; i < getB.length; i++) {
+                    getB = document.querySelectorAll(".B .b");
+                           console.log(self.offsetLeft,self.offsetTop,getB[i].offsetLeft,getB[i].offsetTop);
+                           self = document.querySelector(".self");
+                           if(self.offsetLeft>getB[i].offsetLeft-15&&self.offsetLeft<getB[i].offsetLeft+15&&self.offsetTop>getB[i].offsetTop-15&&self.offsetTop<getB[i].offsetTop+15) {//球30盒子30px
+                               data3.innerHTML = "游戏结束";
+                           }
+                       }
+           },400); */
+
+
+        let data = document.querySelector('body');
+        let getKey = function () {
+
+            data.onkeydown = function (e) {
+                console.log(e.key);
+                if (e.key === "ArrowLeft") {
+                    if (self.offsetLeft == 0) {
+                        self.style.left = 0 + "px";
+                    } else {
+                        self.style.left = self.offsetLeft - 10 + "px";
+                        self.style.transition = "transform 0.1s ease-in-out";
+                        self.style.animationFillMode = "forwards";
+                    }
+                    /*     console.log(self.offsetLeft); */
+
+
+                }
+                if (e.key === "ArrowRight") {
+                    /*  console.log(self.offsetLeft); */
+                    if (self.offsetLeft == 370) {
+                        self.style.left = 370 + "px";
+                    } else {
+                        self.style.left = self.offsetLeft + 10 + "px";
+                        self.style.transition = "transform 0.1s ease-in-out";
+                        self.style.animationFillMode = "forwards";
+                    }
+                }
+
+
+            }
+
+        }
+        getKey();
+    </script>
+</body>
+
+</html>

@@ -1,7 +1,9 @@
 /* body {
     overflow: hidden;
 } */
-
+div, span, p {
+    caret-color: transparent;
+}
 .big {
     overflow: hidden;
     width: 1020px;

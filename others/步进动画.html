@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            margin: 0;
+            padding: 0;
+            width: 600px;
+            height: 420px;
+        }
+
+        .pray {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            width: 600px;
+            height: 420px;
+            animation: mi 3s steps(84) infinite;
+        }
+
+        .card {
+            padding-top: 5%;
+            margin: 0 auto;
+            width: 600px;
+            height: 420px;
+            overflow: hidden;
+            /* background-position-x: 0px; */
+
+            /*   animation: mi 500s linear; */
+
+        }
+
+        @keyframes mi {
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(-50337px);
+            }
+            from {
+                /* left: 0px; */
+                transform: translateX(0);
+                /* left:0px; */
+            }
+
+            to {
+                /* 147*23 */
+                /* background-position-x: calc(-528px + -132px); */
+                /* left: -6900px; */
+                transform: translateX(-50337px);
+                /* left: -50400px; */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="pray">
+            
+        </div>
+    </div>
+    <script>
+        (function(){
+            let pray = document.querySelector(".pray");
+            console.log(pray.innerHTML);
+            for(let i = 63;i<=147;i++){
+                pray.innerHTML += '<img style="width: 600px;height: 420px;" src="../img/cxk篮球圣使_skin2/'+i+'.png" />';
+            }
+        })();
+    </script>
+</body>
+
+</html>
