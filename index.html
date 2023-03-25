@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <div class="loading">Loading...</div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -86,9 +87,9 @@
                             </div>
                             <div class="c" style="width: 100px;">
                                 <div class="data">
-                                    <p>导航栏</p>
+                                    <p>三维正方体</p>
                                 </div>
-                                <img src="./WinFax/B站导航栏.gif" alt="" onclick="window.open('./others/B站导航.html')">
+                                <img src="./WinFax/3D正方体.gif" alt="" onclick="window.open('./others/3D相册.html')">
                             </div>
                             <div class="c" style="width: 100px;">
                                 <div class="data">
@@ -248,9 +249,10 @@
                             </div>
                             <div class="c" style="width: 100px;">
                                 <div class="data">
-                                    <p>暂无</p>
+                                    <p>导航栏</p>
                                 </div>
-                                <img src="./img/black.png" alt="">
+                                <img src="./WinFax/B站导航栏.gif" alt="" onclick="window.open('./others/B站导航.html')">
+                                
                             </div>
                         </div>
                     </div>
@@ -566,7 +568,12 @@
 
     </script>
     <script src="./js/daohang.js"></script>
-
+    <script>
+        //页面加载
+        window.onload=function(){
+        $(".loading").fadeOut();
+    }
+    </script>
 </body>
 
 </html>
