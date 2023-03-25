@@ -12,53 +12,63 @@ $(function () {
     function echart_1() {
         // 基于准备好的dom，初始化echarts实例
         var chartDom = document.getElementById('chart_1');
-        var myChart = echarts.init(chartDom);
-        var option;
+var myChart = echarts.init(chartDom);
+var option;
 
-        option = {
-        title: {
-            text: '近五年人均收入',
-            subtext: '国家统计局',
-            left: 'center',
-            textStyle:{
-                color:'#fff'
-            }
-        },
-        //提示框组件
-        tooltip: {
-            trigger: 'item'//触发类型
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left',
-            textStyle:{
-                color:'#fff'
-            }
-        },
-        series: [
-            {
-                name: '国民人均可支配收入(元)',
-                type: 'pie',
-                radius: '50%',
-                data: [
-                    {value: 23821, name: '2016年'},
-                    {value: 25974, name: '2017年'},
-                    {value: 28228, name: '2018年'},
-                    {value: 30733, name: '2019年'},
-                    {value: 32189, name: '2020年'}
-                ],
-                emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
+option = {
+  title: {
+    text: '近五年人均收入（万元）',left:20,top:20,
+    textStyle:{
+      color:'white',
+  },
+  },
+  tooltip: {
+    trigger: 'item',
+    animation:1,
+    axisPointer: {
+      type: 'shadow',
+      
+    },
+    textStyle:{
+      fontSize:20
+     }
+    
+  },
+  legend: {
+    left:'80%',
+    top:'20%',
+    orient :'vertical',
+    textStyle:{
+      color:'white',
+      fontSize:15
+  },
+  },
+  
+  series: [
+    {
+      
+      name: '',
+      type: 'pie',
+      radius: [20, 80],
+      center: ['40%', '48%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 8
+      },
+      color:['red','blue', 'orange','yellow','gray'],
+      data: [
+        { value: 3.69, name: '2018' },
+        { value: 3.51, name: '2019' },
+        { value: 3.22, name: '2020' },
+        { value: 3.07, name: '2021' },
+        { value: 2.82, name: '2022' },
+      ]
+    }
+  ]
+};
 
-    option && myChart.setOption(option);
+option && myChart.setOption(option);
+
 
         
     }
@@ -67,52 +77,138 @@ $(function () {
         var app = {};
         var chartDom = document.getElementById('chart_2');
         var myChart = echarts.init(chartDom);
-    var option;
+var option;
 
-    option = {
-        title:{
-            text:'近五年全国总GDP（万亿）',
-            left:'5%',
-            textStyle:{
-                color:'#ffffff'
-            }
-        },
-        color:'#3fa7dc',
-        tooltip: {
-            trigger: "axis",
-            axisPointer: {
-            type: "shadow"
-            }
-        },
-        xAxis: {
-            type: 'category',
-            data: ['2016', '2017', '2018', '2019', '2020'],
-            axisLine: {
-                    lineStyle: {
-                    color: "#fff"
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-            axisLine: {
-            lineStyle: {
-            color: "#fff"
-            }
+const pathSymbols = {
+  reindeer:
+    '',
+};
+const labelSetting = {
+  show: true,
+  position: 'right',
+  offset: [10, 0],
+  fontSize: 16,
+  color:'white',
+};
+function makeOption(type, symbol) {
+  return {
+    color:'pink',
+    title: {
+      text: '近五年全国GDP（亿元）',left:20,top:20,
+      textStyle:{
+        color:'#ffffff',
+    }
+    },
+    
+    tooltip: {
+      trigger: 'axis',
+      animation:1,
+      axisPointer: {
+        type: 'shadow'
+      },
+    
+      
+    },
+    grid: {
+      containLabel: true,
+      left: 18,
+      top:70
+    },
+    yAxis: {
+      data: ['2018', '2019', '2020', '2021', '2022'],
+      inverse: true,
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: {
+        margin: 30,
+        color:'white',
+        fontSize: 18
+        
+      },
+      axisPointer: {
+        label: {
+          fontSize: 18,
+          show: true,
+          margin: 30
         }
+      }
+    },
+    xAxis: {
+      splitLine: { show: false },
+      axisLabel: { show: false },
+      axisTick: { show: false },
+      axisLine: { show: false }
+    },
+    animationDurationUpdate: 500,
+    series: [
+      {
+        
+        type: type,
+        label: labelSetting,
+        symbolRepeat: true,
+        symbolSize: ['80%', '80%'],
+        barCategoryGap: '40%',
+        universalTransition: {
+          enabled: true,
+          delay: function (idx, total) {
+            return (idx / total) * 1000;
+          }
         },
-        series: [{
-            name:'全国总GDP',
-            data: [120, 200, 150, 80, 70],
-            type: 'bar',
-            showBackground: true,
-            backgroundStyle: {
-                color: 'rgba(0, 255, 247, 1)'
-            }
-        }]
-        };
+        data: [
+          {
+            value: 919281,
+            symbol: symbol || pathSymbols.reindeer
+          },
+          {
+            value: 986515,
+            symbol: symbol || pathSymbols.ship
+          },
+          {
+            value: 1013567,
+            symbol: symbol || pathSymbols.plane
+          },
+          {
+            value: 1149237,
+            symbol: symbol || pathSymbols.train
+          },
+          {
+            value: 1210207,
+            symbol: symbol || pathSymbols.car
+          }
+        ]
+      },
+      {
+        id: 'bar2',
+        type: type,
+        barGap: '10%',
+        label: labelSetting,
+        symbolRepeat: true,
+        symbolSize: ['80%', '60%'],
+        universalTransition: {
+          enabled: true,
+          delay: function (idx, total) {
+            return (idx / total) * 1000;
+          }
+        },
+        data: [
+        ]
+      }
+    ]
+  };
+}
+const options = [
+  makeOption('pictorialBar'),
+  makeOption('bar'),
+  makeOption('pictorialBar', 'diamond')
+];
+var optionIndex = 0;
+option = options[optionIndex];
+setInterval(function () {
+  optionIndex = (optionIndex + 1) % options.length;
+  myChart.setOption(options[optionIndex]);
+}, 2500);
 
-    option && myChart.setOption(option);
+option && myChart.setOption(option);
 }
 
     function echart_3() {
@@ -195,6 +291,8 @@ $(function () {
                     {name:'海南', value:5532 },
                     {name:'宁夏', value: 3920},
                     {name:'青海', value: 3005},
+                    {name:'台湾', value: 3005},
+                    {name:'南海诸岛', value: 3005},
                     {name:'西藏', value: 1902}
                 ]
             }],
@@ -340,80 +438,119 @@ $(function () {
      */
     function echart_5(){
         var chartDom = document.getElementById('chart_5');
-        var myChart = echarts.init(chartDom);
-        var option;
-
-        option = {
+        var myChart = echarts.init(chartDom,  {
+            renderer: 'svg'
+          });
+          var option;
+          
+          option = {
+       
             title: {
-                text: '行业GDP(万元)',
-                textStyle:{
-                    color:'#fff'
-                }
+                top:10,left:20,
+            textStyle:{
+                color:'#fff'
+            },
+              text: '行业GDP（亿元）'
             },
             tooltip: {
-                trigger: 'axis'
+              trigger: 'axis',
+              axisPointer: {
+                type: 'cross',
+                label: {
+                  backgroundColor: '#black'
+                }
+              }
             },
-            
+            legend: {color:'white',
+                textStyle:{
+                    color:'#fff'
+                },
+              data: []
+            },
+            toolbox: {
+             
+            },
             grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
+              left: '5%',
+              right: '2%',
+              bottom: '5%',
+              containLabel: true
             },
-            
-            xAxis: {
+            textStyle:{
+                color:'#fff'
+            },
+            xAxis: [
+              {
                 type: 'category',
                 boundaryGap: false,
-                data: ['2016', '2017', '2018', '2019', '2020' ],
-                axisLine:{
-                    lineStyle:{
-                        color:'#fff'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLine:{
-                    lineStyle:{
-                        color:'#fff'
-                    }
-                }
-            },
+                
+                data: ['16年','18年', '20年     ',]
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value'
+              }
+            ],
             series: [
-                {
-                    name: '教育',
-                    type: 'line',
-                    stack: '总量',
-                    data: [461, 132, 101, 134, 90]
+              {
+                name: '工业',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                  focus: 'series'
                 },
-                {
-                    name: '科技',
-                    type: 'line',
-                    stack: '总量',
-                    data: [220, 182, 191, 234, 290]
+                data: [245406, 301089, 313071]
+              },
+              {
+                name: '批发、零售',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                  focus: 'series'
                 },
-                {
-                    name: '卫生',
-                    type: 'line',
-                    stack: '总量',
-                    data: [150, 232, 201, 154, 190]
+                data: [73724, 88903, 95686]
+              },
+              {
+                name: '金融',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                  focus: 'series'
                 },
-                {
-                    name: '文化',
-                    type: 'line',
-                    stack: '总量',
-                    data: [320, 332, 301, 334, 390]
+                data: [59964, 70610, 84070]
+              },
+              {
+                name: '地产',
+                type: 'line',
+                stack: 'Total',
+                areaStyle: {},
+                emphasis: {
+                  focus: 'series'
                 },
-                {
-                    name: '体育',
-                    type: 'line',
-                    stack: '总量',
-                    data: [820, 932, 901, 934, 1290]
-                }
+                data: [49969, 64623, 74552]
+              },
+              {
+                name: '农林牧',
+                type: 'line',
+                stack: 'Total',
+                label: {
+                  position: 'top'
+                },
+                areaStyle: {},
+                emphasis: {
+                  focus: 'series'
+                },
+                data: [64660, 67558, 81103]
+              }
             ]
-        };
-
-        option && myChart.setOption(option);
+          };
+          
+          option && myChart.setOption(option);
+          
 	}
     function echart_6(){
         var myChart = echarts.init(document.getElementById('chart_6'));
@@ -480,13 +617,13 @@ $(function () {
         var option;
         
         option = {
-            title:{
-                text:'全国居民消费水平（元）',
-                left:'5%',
-                textStyle:{
-                    color:'#fff'
-                }
-            },
+          title: {
+            top:10,left:20,
+        textStyle:{
+            color:'#fff'
+        },
+          text: '全国居民消费水平（元）'
+        },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {            
@@ -497,15 +634,15 @@ $(function () {
             grid: {
                 left: '3%',
                 right: '4%',
-                bottom: '3%',
+                bottom: '15%',
                 containLabel: true
             },
             xAxis: {
                 type: 'value',
                 axisLine:{
-                    lineStyle:{
+                    /* lineStyle:{
                         color:'#fff'
-                    }
+                    } */
                 }
             },
             yAxis: {
@@ -514,6 +651,7 @@ $(function () {
                 axisLine:{
                     lineStyle:{
                         color:'#fff'
+                        
                     }
                 }
             },
