@@ -16,8 +16,8 @@
         img {
             margin: 0;
             padding: 0;
-            width: 600px;
-            height: 420px;
+            width: 599.25px;
+            height: 420.5px;
         }
 
         .pray {
@@ -25,16 +25,16 @@
             padding: 0;
             display: flex;
             flex-wrap: nowrap;
-            width: 600px;
-            height: 420px;
-            animation: mi 3s steps(84) infinite;
+            width: 599.25px;
+            height: 420.5px;
+            animation: mi 3s steps(85) infinite;
         }
 
         .card {
             padding-top: 5%;
             margin: 0 auto;
-            width: 600px;
-            height: 420px;
+            width: 599.25px;
+            height: 420.5px;
             overflow: hidden;
             /* background-position-x: 0px; */
 
@@ -47,7 +47,7 @@
                 transform: translateX(0);
             }
             100%{
-                transform: translateX(-50337px);
+                transform: translateX(-50936.25px);
             }
             from {
                 /* left: 0px; */
@@ -56,11 +56,11 @@
             }
 
             to {
-                /* 147*23 */
+                /* 599.25*85 */
                 /* background-position-x: calc(-528px + -132px); */
                 /* left: -6900px; */
-                transform: translateX(-50337px);
-                /* left: -50400px; */
+                transform: translateX(-50936.25px);
+                /* left: -51000px; */
             }
         }
     </style>
@@ -77,7 +77,7 @@
             let pray = document.querySelector(".pray");
             console.log(pray.innerHTML);
             for(let i = 63;i<=147;i++){
-                pray.innerHTML += '<img style="width: 600px;height: 420px;" src="../img/cxk篮球圣使_skin2/'+i+'.png" />';
+                pray.innerHTML += '<img style="width: 599.25px;height: 420px;" src="../img/cxk篮球圣使_skin2/'+i+'.png" />';
             }
         })();
     </script>
