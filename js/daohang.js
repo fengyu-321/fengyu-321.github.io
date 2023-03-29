@@ -96,3 +96,10 @@ for (var i = 0; i < sidebarLis.length; i++) {
         });
     }
 }
+let load =document.querySelector('#ftco-loader');
+function imgOnload(){
+    setTimeout(function () {
+        load.style.opacity=0;
+        load.style.zIndex=-1;
+    },5000)
+}
